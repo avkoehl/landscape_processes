@@ -9,7 +9,7 @@
 | $` M `$      | slope
 | $` T `$      | transmissivity
 | $` q `$      | runoff
-| $ `\tau `$   | critical sheer stress for channelization
+| $` \tau `$   | critical sheer stress for channelization
 | $` p_{w} `$  | density of water
 | $` k `$      | surface roughness
 | $` v `$      | kinematic viscosity of water
@@ -36,7 +36,7 @@ $` \frac{a}{b}> \frac{2T^3 }{p_{w}^{3}kvg^2M^2q} + \frac{T}{q}M `$
 
 Shallow Landsliding:
 
-$` \frac{a}{b}> \frac{p_{s}}{p_{w}} \left [ 1 - \frac{tan\Theta}{tan\phi}   \right ]\frac{T}{q}M $`
+$` \frac{a}{b}> \frac{p_{s}}{p_{w}} \left [ 1 - \frac{tan\Theta}{tan\phi}   \right ]\frac{T}{q}M `$
 
 Unconditionally stable:
 
@@ -63,18 +63,19 @@ $` tan\Theta > tan\phi `$
 
 ## Process
 
+DEM
 1. Preprocess the DEM (fill sinks, add known channel)
 2. create slope raster
 3. create flow accumulation raster
 4. create contributing area raster
 5. create a/b raster (contributing area / pixel width)
 
-DEM
-- fill sinks
-- add known channel
-- f
-- compute flow accumulation 
-- compute 
+PRECIPITATION
+1.
+2. 
+
+SOIL
+1. 
+2. 
 
 
-preprocessing: fill sinks + insert known channel network
