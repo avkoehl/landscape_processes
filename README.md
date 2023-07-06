@@ -15,7 +15,7 @@
 | $` v `$      | kinematic viscosity of water
 | $` g `$      | gravity
 | $` p_{s} `$  | dry bulk density of sediment
-| $` \Theta `$ | slope
+| $` \theta `$ | slope
 | $` \phi `$   | internal friction angle
 
 | Constants           | Symbol      | Value              | Units
@@ -36,15 +36,15 @@ $` \frac{a}{b}> \frac{2T^3 }{p_{w}^{3}kvg^2M^2q} + \frac{T}{q}M `$
 
 Shallow Landsliding:
 
-$` \frac{a}{b}> \frac{p_{s}}{p_{w}} \left [ 1 - \frac{tan\Theta}{tan\phi}   \right ]\frac{T}{q}M `$
+$` \frac{a}{b}> \frac{p_{s}}{p_{w}} \left [ 1 - \frac{tan\theta}{tan\phi}   \right ]\frac{T}{q}M `$
 
 Unconditionally stable:
 
-$` tan\Theta < 0.5 tan\phi `$
+$` tan\theta < 0.5 tan\phi `$
 
 Unconditionally unstable
 
-$` tan\Theta > tan\phi `$
+$` tan\theta > tan\phi `$
 
 
 | Landscape Condition       | Process Domain  |
