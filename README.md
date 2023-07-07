@@ -22,7 +22,7 @@
 |---------------------|-------------|--------------------|------
 | water density       | $` p_{w} `$ | 1000               | kg/m^3
 | gravity constant    | $` g `$     | 9.81               | m/s^2
-| kinematic viscosity | $` g `$     | $` 1.31 * 10 ^6 `$ | m/s^2
+| kinematic viscosity | $` v `$     | $` 1.31 * 10 ^6 `$ | m/s^2
 | seconds per day     |             |  86400             | s/d
 
 
