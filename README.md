@@ -1,24 +1,36 @@
 # Landscape Processes
 
+## Input Rasters
+
+All clipped to study area and coregistered 
+
+| Name             | Description                  
+|------------------|------------------------
+| `dem`            | 10m dem 
+| `precip`         | mm/day
+| `T`              | transmissivity of soil Ksat * depth
+| $`p_{s}`$        | particle bulk density
+
 ## Thresholds of landscape condition
 
-| Variable     | Description                  | Source |
+Derived Rasters:
+| Input        | Description                  | Source |
 |--------------|------------------------------|--------|
-| $` a `$      | contributing area            | dem
-| $` b `$      | contour width                | dem
+| $` a `$      | contributing area            | dem 
+| $` b `$      | contour width                | dem resolution
 | $` M `$      | slope                        | dem
-| $` k `$      | surface roughness            | dem
-| $` T `$      | transmissivity               | soil
-| $` p_{s} `$  | dry bulk density of sediment | soil
-| $` q `$      | runoff                       | precip
+| $` q `$      | runoff                       | precip to m/day (and -ET?)
 
-| Variable     | Description |
-|--------------|-------------|
-| $` \tau `$   | critical sheer stress for channelization
-| $` \theta `$ | slope
-| $` \phi `$   | internal friction angle
+Test Variables:
+| Variable  | Description | 
+|----------------|-------------|
+| $` \tau `$     | critical sheer stress for channelization
+| $` \theta `$   | slope
+| $` \phi `$     | internal friction angle
+| $` k `$        | surface roughness            
 
-| Constants           | Symbol      | Value               | Units
+Constants:
+| Descriptio          | Symbol      | Value               | Units
 |---------------------|-------------|---------------------|------
 | water density       | $` p_{w} `$ | 1000                | kg/m^3
 | gravity constant    | $` g `$     | 9.81                | m/s^2
