@@ -2,19 +2,19 @@
 
 ## Thresholds of landscape condition
 
-| Variable     | Description       | Source |
-|--------------|-------------------|--------|
-| $` a `$      | contributing area | dem
-| $` b `$      | contour width     | dem
-| $` M `$      | slope             | dem
-| $` T `$      | transmissivity    | soil
-| $` q `$      | runoff            | precip
+| Variable     | Description                  | Source |
+|--------------|------------------------------|--------|
+| $` a `$      | contributing area            | dem
+| $` b `$      | contour width                | dem
+| $` M `$      | slope                        | dem
+| $` k `$      | surface roughness            | dem
+| $` T `$      | transmissivity               | soil
+| $` p_{s} `$  | dry bulk density of sediment | soil
+| $` q `$      | runoff                       | precip
 
 | Variable     | Description |
 |--------------|-------------|
 | $` \tau `$   | critical sheer stress for channelization
-| $` k `$      | surface roughness
-| $` p_{s} `$  | dry bulk density of sediment
 | $` \theta `$ | slope
 | $` \phi `$   | internal friction angle
 
@@ -25,10 +25,9 @@
 | kinematic viscosity | $` v `$     | $` 1.31 * 10 ^-6 `$ | m^2/s
 | seconds per day     |             |  86400              | s/d
 
-
 Saturated:
 
-$` \frac{a}{b}> \frac{\tau }{q}M `$
+$` \frac{a}{b}> \frac{\T }{q}M `$
 
 Channelization:
 
