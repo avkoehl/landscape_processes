@@ -23,12 +23,12 @@ from pynhd import NLDI
 import pydaymet
 import rioxarray
 
-from data_functions import get_elevation_raster
-from data_functions import get_annual_precip_raster
-from data_functions import get_week_month_precip_raster
-from data_functions import get_soil_transmissivity_raster
-from data_functions import get_soil_bulk_density_raster
-from raster_utils import align_rasters
+from landscape_processes.data_functions import get_elevation_raster
+from landscape_processes.data_functions import get_annual_precip_raster
+from landscape_processes.data_functions import get_wet_month_precip_raster
+from landscape_processes.data_functions import get_soil_transmissivity_raster
+from landscape_processes.data_functions import get_soil_bulk_density_raster
+from landscape_processes.raster_utils import align_rasters
 
 ODIR = '../data/battle_creek/'
 USGS_gage = '11376550' # gage for battle creek (from wikipedia)
@@ -38,7 +38,7 @@ USGS_gage = '11376550' # gage for battle creek (from wikipedia)
 if os.path.exists(ODIR):
     shutil.rmtree(ODIR)
 
-os.makedir(ODIR)
+os.mkdir(ODIR)
 
 basin = NLDI().get_basins(feature_ids = USGS_gage, fsource = "ca_gages")
 basin = basin.to_crs('EPSG:4326')
@@ -57,7 +57,7 @@ rasters = zip(["precip", "wet_precip", "soil", "bulk_density"],
                        [precip, wet_precip, soil, bulk_density])
 
 for name, raster in rasters:
-    print(name)
-    raster.rio.to_raster('temp.tif')
-    align_rasters(elevation, raster, f"{ODIR}/{name}.tif")
-    os.remove('temp.tif')
+    temp_file = 'temp.tif'
+    raster.rio.to_raster(temp_file)
+    align_rasters(temp_file, f"{ODIR}/elevation.tif", f"{ODIR}/{name}.tif")
+    os.remove(temp_file)

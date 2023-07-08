@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "landscape-processes"
+version = "0.1.0"
+description = ""
+authors = ["Arthur Koehl <avkoehl@ucdavis.edu>"]
+readme = "README.md"
+packages = [{include = "landscape_processes"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+rioxarray = "^0.14.1"
+pydaymet = "^0.15.0"
+py3dep = "^0.15.0"
+pynhd = "^0.15.0"
+nest-asyncio = "^1.5.6"
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.14.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

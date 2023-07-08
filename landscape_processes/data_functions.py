@@ -24,6 +24,7 @@ def get_annual_precip_raster(geom, crs="epsg:4326"):
     return yearly_mean
 
 def get_wet_month_precip_raster(geom, crs="epsg:4326"):
+    years = list(range(1992, 2022))
     monthly_data = pydaymet.get_bygeom(geom, variables='prcp', dates=years, time_scale = "monthly", crs=crs)
     actual_crs = monthly_data.rio.crs
 
@@ -58,5 +59,7 @@ def get_soil_transmissivity_raster(geom, crs="epsg:4326"):
 
 def get_soil_bulk_density_raster(geom, crs="epsg:4326"):
     bulk_density_url = 'https://soilmap2-1.lawr.ucdavis.edu/800m_grids/rasters/db.tif'
-    bulk_density = rioxarray.open_rasterio(bulk_density_url).rio.clip(geometries=[geom], crs=crs)
+    bulk_density = rioxarray.open_rasterio(bulk_density_url)
+    bulk_density = bulk_density.rio.reproject(crs)
+    bulk_density = bulk_density.rio.clip(geometries=[geom], crs=crs)
     return bulk_density

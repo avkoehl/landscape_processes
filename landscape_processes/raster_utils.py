@@ -6,7 +6,7 @@ from rasterio.warp import Resampling
 
 # See: https://pygis.io/docs/e_raster_resample.html#raster-resample-methods
 
-def snap_to(raster_path, reference_raster_path, outfile):
+def align_rasters(raster_path, reference_raster_path, outfile):
     """Snap a raster to a reference raster.
 
     Args:
@@ -18,7 +18,7 @@ def snap_to(raster_path, reference_raster_path, outfile):
 
         with rasterio.open(reference_raster_path) as ref:
             transform, width, height = calculate_default_transform(
-                src.crs, ref.crs, src.width, src.height, *ref.bounds
+                src.crs, ref.crs, ref.width, ref.height, *ref.bounds
             )
             kwargs = src.meta.copy()
             kwargs.update(
