@@ -1,0 +1,17 @@
+[study_area]
+USGS_gage = "11376550" # USGS gage number
+
+[paths]
+# relative to the location of the script
+odir = "../data/battlecreek/" # root directory for outputs
+
+[constants]
+# constants that are used in the model
+water_density = 1000.0 # kg/m^3
+water_viscosity = 1.31e-6 #  
+seconds_per_day = 86400.0 # s/d
+gravitational_acceleration = 9.81 # m/s^2
+
+[variables]
+# variables that can be changed to run different scenarios
+tau = 0.0

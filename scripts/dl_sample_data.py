@@ -22,6 +22,7 @@ import py3dep
 from pynhd import NLDI
 import pydaymet
 import rioxarray
+import tomli
 
 from landscape_processes.data_functions import get_elevation_raster
 from landscape_processes.data_functions import get_annual_precip_raster
@@ -30,8 +31,11 @@ from landscape_processes.data_functions import get_soil_transmissivity_raster
 from landscape_processes.data_functions import get_soil_bulk_density_raster
 from landscape_processes.raster_utils import align_rasters
 
-ODIR = '../data/battle_creek/'
-USGS_gage = '11376550' # gage for battle creek (from wikipedia)
+# load config file
+with open('../configs/battlecreek.toml', 'rb') as f:
+    cfg = tomli.load(f)
+ODIR = cfg['paths']['odir']
+USGS_gage = cfg['study_area']['USGS_gage']
 
 # ------------------ #
 
