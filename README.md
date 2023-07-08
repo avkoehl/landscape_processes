@@ -2,28 +2,28 @@
 
 ## Thresholds of landscape condition
 
+| Variable     | Description       | Source |
+|--------------|-------------------|--------|
+| $` a `$      | contributing area | dem
+| $` b `$      | contour width     | dem
+| $` M `$      | slope             | dem
+| $` T `$      | transmissivity    | soil
+| $` q `$      | runoff            | precip
+
 | Variable     | Description |
 |--------------|-------------|
-| $` a `$      | contributing area
-| $` b `$      | contour width
-| $` M `$      | slope
-| $` T `$      | transmissivity
-| $` q `$      | runoff
 | $` \tau `$   | critical sheer stress for channelization
-| $` p_{w} `$  | density of water
 | $` k `$      | surface roughness
-| $` v `$      | kinematic viscosity of water
-| $` g `$      | gravity
 | $` p_{s} `$  | dry bulk density of sediment
 | $` \theta `$ | slope
 | $` \phi `$   | internal friction angle
 
-| Constants           | Symbol      | Value              | Units
-|---------------------|-------------|--------------------|------
-| water density       | $` p_{w} `$ | 1000               | kg/m^3
-| gravity constant    | $` g `$     | 9.81               | m/s^2
-| kinematic viscosity | $` v `$     | $` 1.31 * 10 ^6 `$ | m/s^2
-| seconds per day     |             |  86400             | s/d
+| Constants           | Symbol      | Value               | Units
+|---------------------|-------------|---------------------|------
+| water density       | $` p_{w} `$ | 1000                | kg/m^3
+| gravity constant    | $` g `$     | 9.81                | m/s^2
+| kinematic viscosity | $` v `$     | $` 1.31 * 10 ^-6 `$ | m^2/s
+| seconds per day     |             |  86400              | s/d
 
 
 Saturated:
