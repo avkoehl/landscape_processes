@@ -6,11 +6,11 @@ import pydaymet
 import rioxarray
 import xarray
 
-def get_elevation_data(geom, crs="epsg:4326"):
+def get_elevation_raster(geom, crs="epsg:4326"):
     dem = py3dep.get_map("DEM", geom, resolution=10, crs=crs)
     return dem
 
-def get_annual_precip_data(geom, crs="epsg:4326"):
+def get_annual_precip_raster(geom, crs="epsg:4326"):
     years = list(range(1992, 2022))
     yearly_data = pydaymet.get_bygeom(geom, variables='prcp', dates= years, time_scale = "annual", crs=crs)
     actual_crs = yearly_data.rio.crs
@@ -23,7 +23,7 @@ def get_annual_precip_data(geom, crs="epsg:4326"):
         yearly_mean = yearly_mean.rio.reproject(crs)
     return yearly_mean
 
-def get_wet_month_precip_data(geom, crs="epsg:4326"):
+def get_wet_month_precip_raster(geom, crs="epsg:4326"):
     monthly_data = pydaymet.get_bygeom(geom, variables='prcp', dates=years, time_scale = "monthly", crs=crs)
     actual_crs = monthly_data.rio.crs
 
@@ -38,7 +38,7 @@ def get_wet_month_precip_data(geom, crs="epsg:4326"):
         wet_monthly_mean = wet_monthly_mean.rio.reproject(crs)
     return wet_monthly_mean
 
-def get_soil_transmissivity(geom, crs="epsg:4326"):
+def get_soil_transmissivity_raster(geom, crs="epsg:4326"):
     ksat_mean_url = 'https://soilmap2-1.lawr.ucdavis.edu/800m_grids/rasters/mean_ksat.tif'
     soil_depth_url = 'https://soilmap2-1.lawr.ucdavis.edu/800m_grids/rasters/soil_depth.tif'
 
@@ -56,7 +56,7 @@ def get_soil_transmissivity(geom, crs="epsg:4326"):
 
     return t
 
-def get_soil_bulk_density(geom, crs="epsg:4326"):
+def get_soil_bulk_density_raster(geom, crs="epsg:4326"):
     bulk_density_url = 'https://soilmap2-1.lawr.ucdavis.edu/800m_grids/rasters/db.tif'
     bulk_density = rioxarray.open_rasterio(bulk_density_url).rio.clip(geometries=[geom], crs=crs)
     return bulk_density
