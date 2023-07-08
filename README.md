@@ -27,7 +27,7 @@
 
 Saturated:
 
-$` \frac{a}{b}> \frac{\T }{q}M `$
+$` \frac{a}{b}> \frac{T }{q}M `$
 
 Channelization:
 
