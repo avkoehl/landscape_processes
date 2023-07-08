@@ -14,6 +14,7 @@
           2. annual precipitation (30 year mean annual precipitation)
           3. wet precipitation (30 year mean precipitation of wettest month)
           4. soil (raster of soil transmissivity)
+          5. particle bulk density 
 """
 import os
 import shutil
