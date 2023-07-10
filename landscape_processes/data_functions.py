@@ -20,7 +20,7 @@ def get_annual_precip_raster(geom, crs="epsg:4326"):
         yearly_mean = yearly_mean['prcp']
         yearly_mean = yearly_mean / 365 # days per year
         yearly_mean = yearly_mean / 1000 # (convert from mm to m)
-        yearly_mean.time.attrs['units'] = 'm'
+        yearly_mean.attrs['units'] = 'm'
         yearly_mean.rio.write_crs(actual_crs, inplace=True)
         yearly_mean = yearly_mean.rio.reproject(crs)
     return yearly_mean
@@ -38,7 +38,7 @@ def get_wet_month_precip_raster(geom, crs="epsg:4326"):
         wet_monthly_mean = wet_monthly_mean['prcp']
         wet_monthly_mean = wet_monthly_mean / 30 # avg 30 days per month
         wet_monthly_mean = wet_monthly_mean / 1000 # (convert from mm to m)
-        wet_monthly_mean.time.attrs['units'] = 'm'
+        wet_monthly_mean.attrs['units'] = 'm'
         wet_monthly_mean.rio.write_crs(actual_crs, inplace=True)
         wet_monthly_mean = wet_monthly_mean.rio.reproject(crs)
     return wet_monthly_mean
