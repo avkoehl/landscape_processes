@@ -50,19 +50,19 @@ geom = basin.geometry[0]
 
 # get the rasters clipped to the study area
 print("getting Data")
-elevation = get_elevation_raster(geom)
-precip = get_annual_precip_raster(geom)
-wet_precip = get_wet_month_precip_raster(geom)
-soil = get_soil_transmissivity_raster(geom)
-bulk_density = get_soil_bulk_density_raster(geom)
+dem = get_elevation_raster(geom, geom_crs=basin.crs, crs='EPSG:5070')
+precip = get_annual_precip_raster(geom, geom_crs=basin.crs, crs='EPSG:5070')
+wet_precip = get_wet_month_precip_raster(geom, geom_crs=basin.crs, crs='EPSG:5070')
+soil = get_soil_transmissivity_raster(geom, geom_crs=basin.crs, crs='EPSG:5070')
+bulk_density = get_soil_bulk_density_raster(geom, geom_crs=basin.crs, crs='EPSG:5070')
 
 # align the rasters to the elevation raster (10m)
-elevation.rio.to_raster(f'{ODIR}/elevation.tif')
+dem.rio.to_raster(f'{ODIR}/elevation.tif')
 rasters = zip(["precip", "wet_precip", "soil", "bulk_density"], 
                        [precip, wet_precip, soil, bulk_density])
 
 print("Saving Data")
 for name, raster in rasters:
     print(f"\tsaving {ODIR}/{name}")
-    raster = raster.rio.reproject_match(elevation)
+    raster = raster.rio.reproject_match(dem)
     raster.rio.to_raster(f"{ODIR}/{name}.tif")

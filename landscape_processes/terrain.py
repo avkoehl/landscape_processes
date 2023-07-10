@@ -1,12 +1,6 @@
 import numpy as np
 import richdem as rd
-
-# slope
-def compute_slope(elevation_raster_file, ofile):
-    dem = rd.LoadGDAL(elevation_raster_file)
-    slope = rd.TerrainAttribute(dem, attrib='slope_degrees')
-    rd.SaveGDAL(ofile, slope)
-    return ofile
+import xarray
 
 # flow accumulation
 def compute_accumulation(elevation_raster_file, ofile):
@@ -20,9 +14,16 @@ def compute_accumulation(elevation_raster_file, ofile):
 
 # a: contributing area (area of each cell that flows into a given cell)
 # b: width of each cell
-def compute_a_over_b(flow_accum_raster_file, ofile, area=100, width=10):
-    flow_accum = rd.LoadGDAL(flow_accum_raster_file)
+def compute_a_over_b(flow_accum):
+    # pixel width in meters
+    pw = 10
+    # pixel hieght in meters
+    ph = 10
+
+    area = pw*ph
     a = flow_accum * area
-    ab = a/width
-    rd.SaveGDAL(ofile, ab)
-    return ofile
+    b = pw
+
+    with xarray.set_options(keep_attrs=True):
+        ab = a/b
+    return ab
