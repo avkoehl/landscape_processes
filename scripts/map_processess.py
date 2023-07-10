@@ -1,21 +1,29 @@
 import glob
 
 import tomli
+import xarray
 
+from landscape_processes.terrain import compute_a_over_b
+from landscape_processes.terrain import compute_slope
+from landscape_processes.terrain import compute_accumulation
 from landscape_processes.thresholds import compute_saturated_raster
 
-# Load the config file
 with open('../configs/battlecreek.toml', 'rb') as f:
     cfg = tomli.load(f)
 ODIR = cfg['paths']['odir']
 
-# raster file paths
-elevation = glob.glob(ODIR + '/elevation.tif')[0]
-soil = glob.glob(ODIR + '/soil.tif')[0]
-precip = glob.glob(ODIR + '/precip.tif')[0]
-wet_precip = glob.glob(ODIR + '/wet_precip.tif')[0]
-bulk_density = glob.glob(ODIR + '/bulk_density.tif')[0]
+# ------------------------------------------------
+M = compute_slope(cfg['raster_files']['elevation_file'], f"{ODIR}/slope.tif")
+flow_accum = compute_accumulation(cfg['raster_files']['elevation_file'], f"{ODIR}/flow_accum.tif")
+a_over_b = compute_a_over_b(flow_accum, f"{ODIR}/a_over_b.tif")
 
+# ---------
+# Thresholds
+def compute_saturated_raster(slope, precip, T):
+    M,q,T = [load_raster_xr(f) for f in [slope, precip, T]]
+    
+    with xarray.set_options(keep_attrs=True):
+        sat = M*T/q
 
-# compute slope
-slope = compute_slope(elevation)
+    return sat
+

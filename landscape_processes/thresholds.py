@@ -1,6 +1,8 @@
 import math
 import numpy as np
 
+def 
+
 def compute_saturated_raster(slope, precipitation, transmissivity):
     return slope * (transmissivity / precipitation)
 

@@ -1,9 +1,16 @@
-[study_area]
-USGS_gage = "11376550" # USGS gage number
-
 [paths]
+# outputs
 # relative to the location of the script
 odir = "../data/battlecreek/" # root directory for outputs
+
+[raster_files]
+# inputs
+# raster file paths
+# relative to the location of the script
+elevation_file = "../data/battlecreek/elevation.tif" 
+precip_file = "../data/battlecreek/wet_precip.tif" 
+transmissivity_file = "../data/battlecreek/soil.tif" 
+bulk_density_file = "../data/battlecreek/bulk_density.tif" 
 
 [constants]
 # constants that are used in the model
@@ -15,3 +22,4 @@ gravitational_acceleration = 9.81 # m/s^2
 [variables]
 # variables that can be changed to run different scenarios
 tau = 0.0
+psi = 0.35

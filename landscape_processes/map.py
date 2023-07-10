@@ -8,6 +8,18 @@ from landscape_processes.thresholds import  compute_saturated_raster
 from landscape_processes.thresholds import  compute_channelization_raster
 from landscape_processes.thresholds import  compute_stability
 
+def compute_thresholds(
+        elevation_raster,
+        precipitation_raster,
+        soil_raster,
+        constants = {}
+        ):
+
+    # saturated
+    # channelization
+    # stability
+    # landsliding
+
 def map_dominant_processes(
         elevation_raster,
         precipitation_raster,
