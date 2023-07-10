@@ -4,38 +4,38 @@
 
 All clipped to study area and coregistered 
 
-| Name             | Description                  
-|------------------|------------------------
-| `dem`            | 10m dem 
-| `precip`         | mm/day
-| `T`              | transmissivity of soil Ksat * depth
-| $`p_{s}`$        | particle bulk density
+| Name             | Description                           | units
+|------------------|---------------------------------------|------
+| `dem`            | elevation                             | m
+| `precip`         | precipitation 30 year norm            | m/day
+| `T`              | transmissivity of soil (Ksat * depth) | m^2/day
+| $`p_{s}`$        | particle bulk density of the soil     | kg/m^3
 
 ## Thresholds of landscape condition
 
 Derived Rasters:
-| Input        | Description                  | Source |
-|--------------|------------------------------|--------|
-| $` a `$      | contributing area            | dem 
-| $` b `$      | contour width                | dem resolution
-| $` M `$      | slope                        | dem
-| $` q `$      | runoff                       | precip to m/day (and -ET?)
+| Input        | Description                  | Source                                     | units
+|--------------|------------------------------|--------------------------------------------|--------
+| $` a `$      | contributing area            | dem                                        | m^2
+| $` b `$      | contour width                | dem pixel resolution                       | m
+| $` M `$      | slope                        | dem                                        | degrees
+| $` q `$      | runoff                       | precip * loss factor (ET, land use raster) | m/day
+| $` \theta `$ | slope (same as M?)           | dem                                        | degrees
 
-Test Variables:
-| Variable  | Description | 
-|----------------|-------------|
-| $` \tau `$     | critical sheer stress for channelization
-| $` \theta `$   | slope
-| $` \phi `$     | internal friction angle
-| $` k `$        | surface roughness            
+Parameters:
+| Symbol         | Description                              | Default Value | units 
+|----------------|------------------------------------------|---------------|-----
+| $` \tau `$     | critical sheer stress for channelization | 16            | Pa
+| $` \phi `$     | internal friction angle                  | 45            | degrees
+| $` k `$        | surface roughness                        | 10000         | (dimensionless)
 
 Constants:
-| Descriptio          | Symbol      | Value               | Units
-|---------------------|-------------|---------------------|------
-| water density       | $` p_{w} `$ | 1000                | kg/m^3
-| gravity constant    | $` g `$     | 9.81                | m/s^2
-| kinematic viscosity | $` v `$     | $` 1.31 * 10 ^-6 `$ | m^2/s
-| seconds per day     |             |  86400              | s/d
+|  Symbol      | Description         | Value               | Units
+|--------------|---------------------|---------------------|------
+|  $` p_{w} `$ | water density       | 1000                | kg/m^3
+|  $` g `$     | gravity constant    | 9.81                | m/s^2
+|  $` v `$     | kinematic viscosity | $` 1.31 * 10 ^-6 `$ | m^2/s
+|              | seconds per day     |  86400              | s/d
 
 Saturated:
 
@@ -65,28 +65,3 @@ $` tan\theta > tan\phi `$
 | Channelized               | Channelization  |
 | Unconditionally Stable    | Landslide (wet) |
 | Unconditionally Unstable  | Landslide (dry) |
-
-## Inputs
-
-- 10m DEM of watershed
-- Yearly Mean Precipitation (30 year PRISM); Yearly Monthly Max Precipitation (30 year PRISM)
-- Soil Map for transmissivity [NRCS web soil survey](http://websoilsurvey.sc.egov.usda.gov/App/HomePage.htm)
-
-## Process
-
-DEM
-1. Preprocess the DEM (fill sinks, add known channel)
-2. create slope raster
-3. create flow accumulation raster
-4. create contributing area raster
-5. create a/b raster (contributing area / pixel width)
-
-PRECIPITATION
-1.
-2. 
-
-SOIL
-1. 
-2. 
-
-

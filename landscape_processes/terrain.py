@@ -4,7 +4,7 @@ import richdem as rd
 # slope
 def compute_slope(elevation_raster_file, ofile):
     dem = rd.LoadGDAL(elevation_raster_file)
-    slope = rd.TerrainAttribute(dem, attrib='slope_riserun')
+    slope = rd.TerrainAttribute(dem, attrib='slope_degrees')
     rd.SaveGDAL(ofile, slope)
     return ofile
 

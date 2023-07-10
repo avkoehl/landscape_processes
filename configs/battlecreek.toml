@@ -15,11 +15,12 @@ bulk_density_file = "../data/battlecreek/bulk_density.tif"
 [constants]
 # constants that are used in the model
 water_density = 1000.0 # kg/m^3
-water_viscosity = 1.31e-6 #  
+water_viscosity = 1.31e-6 # m^2/s 
 seconds_per_day = 86400.0 # s/d
 gravitational_acceleration = 9.81 # m/s^2
 
 [variables]
 # variables that can be changed to run different scenarios
-tau = 0.0
+k = 10000
+tau = 16
 psi = 0.35

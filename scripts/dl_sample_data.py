@@ -30,7 +30,6 @@ from landscape_processes.data_functions import get_annual_precip_raster
 from landscape_processes.data_functions import get_wet_month_precip_raster
 from landscape_processes.data_functions import get_soil_transmissivity_raster
 from landscape_processes.data_functions import get_soil_bulk_density_raster
-from landscape_processes.raster_utils import align_rasters
 
 USGS_Gage = '11376550'
 ODIR = '../data/battlecreek/'
