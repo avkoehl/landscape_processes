@@ -43,7 +43,7 @@ $` \frac{a}{b}> \frac{T }{q}M `$
 
 Channelization:
 
-$` \frac{a}{b}> \frac{2T^3 }{p_{w}^{3}kvg^2M^2q} + \frac{T}{q}M `$
+$` \frac{a}{b}> \frac{2\tau^3 }{p_{w}^{3}kvg^2M^2q} + \frac{T}{q}M `$
 
 Shallow Landsliding:
 
