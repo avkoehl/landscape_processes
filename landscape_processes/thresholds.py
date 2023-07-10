@@ -20,7 +20,7 @@ def compute_landsliding_raster(sat, ps, pw, M, psi):
     return ps_over_pw * middle * sat
 
 def unconditionally_stable(M, psi):
-    return np.tan(M) >np.tan(psi)
+    return np.tan(M) < (0.5 * np.tan(psi))
 
 def unconditionally_unstable(M, psi):
-    return np.tan(M) < (0.5 * np.tan(psi))
+    return np.tan(M) > np.tan(psi)

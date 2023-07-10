@@ -4,6 +4,7 @@ import tomli
 import xarray
 
 from landscape_processes.raster_utils import load_raster_xr
+from landscape_processes.terrain import compute_slope_rd
 from landscape_processes.terrain import compute_a_over_b
 from landscape_processes.terrain import compute_accumulation
 from landscape_processes.thresholds import compute_saturated_raster
@@ -17,15 +18,15 @@ with open('../configs/battlecreek.toml', 'rb') as f:
 ODIR = cfg['paths']['odir']
 
 # ------------------------------------------------
-flow_accum = compute_accumulation(cfg['raster_files']['elevation_file'], f"{ODIR}/flow_accum.tif")
-a_over_b = compute_a_over_b(flow_accum, f"{ODIR}/a_over_b.tif")
+slope_file = compute_slope_rd(cfg['raster_files']['elevation_file'], f"{ODIR}/slope.tif")
+flow_accum_file = compute_accumulation(cfg['raster_files']['elevation_file'], f"{ODIR}/flow_accum.tif")
+flow_accum = load_raster_xr(f"{ODIR}/flow_accum.tif")
+a_over_b = compute_a_over_b(flow_accum)
 
-# TODO: fix slope, a_over_b needs to use actual cell dimensions not 10m
 
 # ------------------------------------------------
 # Load the rasters
 M = load_raster_xr(f"{ODIR}/slope.tif")
-a_over_b = load_raster_xr(f"{ODIR}/a_over_b.tif")
 
 T = load_raster_xr(cfg['raster_files']['transmissivity_file'])
 ps = load_raster_xr(cfg['raster_files']['bulk_density_file'])

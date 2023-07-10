@@ -21,6 +21,6 @@ gravitational_acceleration = 9.81 # m/s^2
 
 [variables]
 # variables that can be changed to run different scenarios
-k = 10000
-tau = 16
-psi = 0.35
+k = 10000 # dimensionless
+tau = 16 # pascals
+psi = 45 # degrees
