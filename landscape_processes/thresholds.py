@@ -1,4 +1,3 @@
-import math
 import numpy as np
 import xarray
 
@@ -17,11 +16,11 @@ def compute_channelization_raster(sat, M, q, k, v, g, pw, tau):
 
 def compute_landsliding_raster(sat, ps, pw, M, psi):
     ps_over_pw = ps/pw
-    middle = 1 - (math.tan(M) / math.tan(psi))
+    middle = 1 - (np.tan(M) / np.tan(psi))
     return ps_over_pw * middle * sat
 
 def unconditionally_stable(M, psi):
-    return math.tan(M) > math.tan(psi)
+    return np.tan(M) >np.tan(psi)
 
 def unconditionally_unstable(M, psi):
-    return math.tan(M) < (0.5 * math.tan(psi))
+    return np.tan(M) < (0.5 * np.tan(psi))

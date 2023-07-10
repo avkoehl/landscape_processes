@@ -34,14 +34,26 @@ q = load_raster_xr(cfg['raster_files']['precip_file'])
 # ------------------------------------------------
 # compute the threshold rasters
 sat = compute_saturated_raster(M, q, T)
-channelized = compute_channelization_raster(sat, M, q, k=cfg['variables']['k'], 
-                                            v=cfg['constants']['water_viscosity'],
-                                            g=cfg['constants']['gravitational_acceleration'], 
-                                            pw=cfg['constants']['water_density'], 
-                                            tau=cfg['variables']['tau'])
-landsliding = compute_landsliding_raster(sat, ps, pw=cfg['constants']['water_density'], M, psi=cfg['variables']['psi'])
+
+channelized = compute_channelization_raster(
+        sat=sat, 
+        M=M, 
+        q=q, 
+        k=cfg['variables']['k'], 
+        v=cfg['constants']['water_viscosity'],
+        g=cfg['constants']['gravitational_acceleration'], 
+        pw=cfg['constants']['water_density'], 
+        tau=cfg['variables']['tau'])
+
+landsliding = compute_landsliding_raster(
+        sat=sat, 
+        ps=ps, 
+        pw=cfg['constants']['water_density'], 
+        M=M, 
+        psi=cfg['variables']['psi'])
+
 cs = unconditionally_stable(M, psi=cfg['variables']['psi'])
-cu = unconditionally_ustable(M, psi=cfg['variables']['psi'])
+cu = unconditionally_unstable(M, psi=cfg['variables']['psi'])
 
 # ------------------------------------------------
 # map where the thresholds are exceeded

@@ -17,6 +17,7 @@ tomli = "^2.0.1"
 richdem = "^0.3.4"
 numpy = "^1.25.1"
 gdal = "3.6.1"
+matplotlib = "^3.7.2"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.14.0"
