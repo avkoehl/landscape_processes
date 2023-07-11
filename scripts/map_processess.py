@@ -35,7 +35,6 @@ q = load_raster_xr(cfg['raster_files']['precip_file'])
 # ------------------------------------------------
 # compute the threshold rasters
 sat = compute_saturated_raster(M, q, T)
-
 channelized = compute_channelization_raster(
         sat=sat, 
         M=M, 
@@ -58,3 +57,34 @@ cu = unconditionally_unstable(M, psi=cfg['variables']['psi'])
 
 # ------------------------------------------------
 # map where the thresholds are exceeded
+
+# saturated
+sat_b = (a_over_b > sat)
+sat_inds = np.where(sat_b)
+
+# channelized
+channel_b = (a_over_b > channelized)
+channel_inds = np.where(channel_b)
+
+# landsliding
+ls_b = (a_over_b > landsliding)
+ls_inds = np.where(ls_b)
+
+# process codes:
+# {0: 'soil creep',
+#  1: 'sheet wash ',
+#  2: 'gullying',
+#  3: 'landsliding dry',
+#  4: 'landsliding wet'}
+
+processes = -1 * np.ones_like(a_over_b)
+processes[np.where(a_over_b < sat)] = 0
+
+processes[sat_inds] = 1
+
+processes[channel_inds] = 2
+
+#processes[ls_inds] = 3
+
+test = pd.Series(processes.flatten())
+test.value_counts()

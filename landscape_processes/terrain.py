@@ -1,6 +1,6 @@
 import numpy as np
 import richdem as rd
-import xarray as xr
+import xarray 
 from xrspatial import slope
 
 def compute_slope_rd(elevation_raster_file, ofile):
@@ -30,9 +30,9 @@ def compute_accumulation(elevation_raster_file, ofile):
 # b: width of each cell
 def compute_a_over_b(flow_accum):
     # pixel width in meters
-    pw = abs(flow_accum[0])
+    pw = abs(flow_accum.rio.resolution()[0])
     # pixel hieght in meters
-    ph = abs(flow_accum[1])
+    ph = abs(flow_accum.rio.resolution()[1])
 
     area = pw*ph
     a = flow_accum * area
