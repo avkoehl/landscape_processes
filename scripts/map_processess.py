@@ -23,6 +23,10 @@ flow_accum_file = compute_accumulation(cfg['raster_files']['elevation_file'], f"
 flow_accum = load_raster_xr(f"{ODIR}/flow_accum.tif")
 a_over_b = compute_a_over_b(flow_accum)
 
+# save a_over_b
+a_over_b.rio.to_raster(f"{ODIR}/a_over_b.tif", dtype='float32', overwrite=True)
+# save flow_accum
+flow_accum.rio.to_raster(f"{ODIR}/flow_accum.tif", dtype='float32', overwrite=True)
 
 # ------------------------------------------------
 # Load the rasters
