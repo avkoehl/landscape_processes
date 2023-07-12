@@ -3,12 +3,12 @@ import os
 import numpy as np
 import richdem as rd
 import xarray 
-from xrspatial import slope
+import xrspatial as xrs
 
 from landscape_processes.raster_utils import load_raster_xr
 
 def compute_slope_xr(dem):
-    slope = slope(dem)
+    slope = xrs.slope(dem)
     return slope
 
 def compute_accumulation(elevation):
@@ -26,7 +26,7 @@ def compute_accumulation(elevation):
 
     # convert to xarray
     rd.SaveGDAL(temp_file, flow_accum)
-    flow_accum = load_raster_rx(temp_file)
+    flow_accum = load_raster_xr(temp_file)
     os.remove(temp_file)
     return flow_accum
 
@@ -48,7 +48,7 @@ def compute_a_over_b(flow_accum):
 
 def derived_terrain_rasters(elevation):
     theta = compute_slope_xr(elevation)
-    M = np.sine(theta)
+    M = np.sin(theta)
     flow_accum = compute_accumulation(elevation)
     a_over_b = compute_a_over_b(flow_accum)
 
