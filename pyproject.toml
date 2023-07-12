@@ -22,6 +22,7 @@ xarray-spatial = "^0.3.7"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.14.0"
+jupyterlab = "^4.0.2"
 
 [build-system]
 requires = ["poetry-core"]
